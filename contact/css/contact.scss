@@ -1,0 +1,666 @@
+@use '../../css/base/variables' as v;
+
+/*-----------------------------
+
+base
+
+----------------------------*/
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
+    color: v.$main-color;
+}
+
+h2 {
+    font-size: 3.2rem;
+    letter-spacing: .68;
+    font-weight: 800;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+h3 {
+    font-size: 2.4rem;
+    font-weight: bold;
+    letter-spacing: .05;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.wrapper {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.bg-gray {
+    background-color: v.$background-color;
+}
+
+button {
+    background-color: v.$button-color;
+    width: 160px;
+    height: 36px;
+    color: #fff;
+    display: inline-block;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    font-weight: bold;
+
+    &:hover {
+        opacity: 0.7;
+    }
+}
+
+
+/*--------------------------
+
+header 
+
+--------------------------*/
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1 {
+    width: 260px;
+    position: fixed;
+    top: 38px;
+    left: 4vw;
+    z-index: 1;
+
+    &.black svg path {
+        fill: v.$main-color;
+        transition: fill .3s;
+    }
+}
+
+.header-nav {
+    font-weight: 800;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    padding: 180px 0 0;
+    letter-spacing: .068;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 36.1vw;
+    background-color: rgba(34, 34, 34, .95);
+    text-align: center;
+    z-index: 2;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform .3s, opacity .3s;
+
+    a {
+        color: #fff;
+
+        &:hover {
+            opacity: .7;
+        }
+    }
+
+}
+
+
+.nav-list {
+    .nav-item {
+        margin-bottom: 30px;
+
+        &:first-of-type {
+            margin-bottom: 40px;
+        }
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+    }
+}
+
+
+
+/* ハンバーガーメニュー(ボタンが開いていないとき)　*/
+
+.toggle_menu {
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 38px;
+    right: 4vw;
+    z-index: 3;
+
+}
+
+/* ハンバーガーメニューが開いたとき */
+/*かつハンバーガーボタンがfvより下にあるとき */
+
+.toggle_menu.black {
+    .bar {
+        background-color: v.$main-color;
+        transition: background-color .3s;
+    }
+
+    .menu {
+        color: v.$main-color;
+        transition: color .3s;
+    }
+}
+
+
+
+.bar {
+    display: block;
+    background-color: #fff;
+    height: 2px;
+    width: 22px;
+    border-radius: 1px;
+}
+.bar_top {
+    transform: translateY(-4px);
+    transition: transform .3s;
+}
+
+.bar_bottom {
+    transform: translateY(4px);
+    transition: transform .3s;
+}
+
+.menu {
+    display: block;
+    font-size: 1rem;
+    font-weight: 800;
+    color: #fff;
+    text-transform: uppercase;
+    margin-left: 7px;
+}
+
+
+/* ハンバーガーボタン(メニュー)が開いた時 */
+
+.bar.cross.bar_top {
+    transform: translateY(2px)rotate(30deg);
+    transition: transform .3s
+}
+
+.bar.cross.bar_middle {
+    opacity: 0;
+    transition: opacity .3s;
+}
+
+.bar.cross.bar_bottom {
+    transform: translateY(-2px)rotate(-30deg);
+    transition: transform .3s;
+}
+
+
+.header-nav.open {
+    /* ハンバーガーメニューが開いたとき　*/
+    /* ハンバーガーメニューが開いていなかった時に、
+                右に配置していたnavの位置を左に置き、navが見え
+                るようにopacity: 1を指定している */
+
+    transform: translateX(0);
+    opacity: 1;
+    transition: transform .3s, opacity .3s;
+}
+.toggle_musk {
+    display: none;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(34, 34, 34, .6);
+    z-index: 1;
+}
+
+
+
+
+
+/* ハンバーガーメニューが開いたとき　*/
+
+body {
+    .noscroll {
+        overflow: hidden;
+    }
+}
+
+
+
+/*--------------------------
+
+main 
+
+--------------------------*/
+.fv {
+    height: 60vh;
+    min-height: 450px;
+    margin-bottom: 120px;
+
+    &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: v.$fv-color;
+        width: 50%;
+        height: 60vh;
+        z-index: -1;
+    }
+
+    .kv-wrapper {
+        height: 83.4%;
+        width: 76.4%;
+        background-image: url(../../images/heading-img_about.jpg);
+        background-repeat: no-repeat;
+        background-position: center 0;
+        background-size: cover;
+        position: relative;
+
+        .copy-wrapper {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translate(50%, -50%);
+
+
+            // .copy-en {
+            //     color: #fff;
+            //     font-size: 2rem;
+            //     font-weight: bold;
+            //     letter-spacing: 0;
+            //     margin-bottom: 10px;
+            // }
+
+            h3 {
+                color: #fff;
+                font-size: 7.2rem;
+                font-weight: bold;
+                line-height: 1.2em;
+                text-transform: uppercase;
+            }
+
+            .copy-ja {
+                color: #fff;
+                font-size: 2rem;
+                font-weight: bold;
+                letter-spacing: .05em;
+            }
+
+        }
+    }
+}
+
+/*--------------------------
+
+main 
+
+--------------------------*/
+.fv {
+    height: 62.7vh;
+    min-height: 450px;
+
+    &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: v.$fv-color;
+        width: 50%;
+        height: 60vh;
+        z-index: -1;
+    }
+
+    .kv-wrapper {
+        height: 83.4%;
+        width: 76.4%;
+        background-image: url(../../images/heading-img_contact.jpg);
+        background-repeat: no-repeat;
+        background-position: center 0;
+        background-size: cover;
+        position: relative;
+
+        .copy-wrapper {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translate(50%, -50%);
+
+
+            // .copy-en {
+            //     color: #fff;
+            //     font-size: 2rem;
+            //     font-weight: bold;
+            //     letter-spacing: 0;
+            //     margin-bottom: 10px;
+            // }
+
+            h3 {
+                color: #fff;
+                font-size: 7.2rem;
+                font-weight: bold;
+                line-height: 1.2em;
+                text-transform: uppercase;
+            }
+
+            .copy-ja {
+                color: #fff;
+                font-size: 2rem;
+                font-weight: bold;
+                letter-spacing: .05em;
+            }
+
+        }
+    }
+
+
+}
+
+/*--------------------------
+
+formSec
+
+--------------------------*/
+
+
+.formSec {
+    max-width: 700px;
+
+    .form-lead {
+        line-height: 1.5;
+        margin-bottom: 52px;
+    }
+
+    dt {
+        margin-bottom: 10px;
+
+        &:first-of-type {
+            margin-bottom: 18px;
+        }
+
+        span {
+            display: inline-block;
+            background-color: v.$main-color;
+            color: #fff;
+            margin-left: 20px;
+            font-size: 1.2rem;
+            padding: 1px 5px;
+        }
+    }
+
+    dd {
+        margin-bottom: 42px;
+    }
+
+    .contents-list {
+        display: flex;
+        align-items: center;
+
+        .radio-btn {
+            margin-right: 50px;
+            vertical-align: -4px;
+        }
+    }
+
+    input[type="radio"] {
+        width: 20px;
+        height: 20px;
+        margin-right: 10px;
+        border-radius: 50px;
+    }
+
+
+    input[type="email"],
+    input[type="tel"],
+    input[type="text"],
+    textarea {
+        border: 1px solid v.$main-color;
+        width: 100%;
+        background-color: #fff;
+        padding: 10px;
+    }
+
+    textarea {
+        height: 212px;
+    }
+
+    /*
+    privacy plicy
+    */
+    .privacy-policy-title {
+        font-size: 1.6rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+
+    }
+
+    .privacy-policy-details {
+        padding: 10px;
+        height: 250px;
+        border: 1px solid v.$main-color;
+        overflow: scroll;
+        margin-bottom: 40px;
+    }
+
+    p {
+        margin-bottom: 27px;
+    }
+
+    .confirm {
+        text-align: center;
+        font-weight: bold;
+
+        .checkbox {
+            border: 1px solid #333;
+            margin-right: 8px;
+            width: 18px;
+            height: 18px;
+            vertical-align: -3px;
+        }
+
+    }
+
+    .button-wrapper {
+        text-align: center;
+
+        .submit-btn {
+            color: #fff;
+            background-color: v.$button-color;
+            width: 160px;
+            font-size: 1.2rem;
+            line-height: 36px;
+            display: block;
+            margin: 40px auto 0;
+            margin-bottom: 138px;
+
+            &:hover {
+                opacity: .7;
+            }
+        }
+    }
+
+}
+
+
+/*--------------------------
+
+formSec
+
+--------------------------*/
+
+footer {
+    background-color: v.$footer-color;
+    color: #fff;
+    font-size: 1rem;
+    text-align: center;
+    padding: 18px 0;
+}
+
+
+
+/*--------------------------
+
+SP版
+
+--------------------------*/
+
+
+
+@media screen and (max-width:768px) {
+
+
+
+    /*-----------------------------
+
+　　sp-base
+　　---------------------------*/
+
+
+    h2 {
+        font-size: 3.2rem;
+        letter-spacing: .68;
+        font-weight: 800;
+        margin-bottom: 30px;
+        text-transform: uppercase;
+    }
+
+    h3 {
+        font-size: 2.8rem;
+        font-weight: bold;
+        letter-spacing: .6em;
+        margin-bottom: 7px;
+    }
+
+    .wrapper {
+        max-width: 100%;
+        margin: 0 15px;
+    }
+
+
+    .bg-gray {
+        background-color: v.$background-color;
+    }
+
+    button {
+        font-size: 1.1rem;
+    }
+
+    /*------------------------------
+
+    sp-main
+
+    ------------------------------*/
+
+    main {
+
+
+
+
+        /*------------------------------
+
+    sp-fv
+
+    ------------------------------*/
+
+
+        .fv {
+            min-height: 450px;
+            margin-bottom: 80px;
+
+            &::after {
+                height: 65vh;
+            }
+
+            .kv-wrapper {
+                height: 86%;
+                width: 76.4%;
+
+                .copy-wrapper {
+                    position: absolute;
+                    top: 50%;
+                    right: 0;
+                    transform: translate(15%, -50%);
+
+
+                    h3 {
+                        font-size: 5.2rem;
+                        line-height: 1.6;
+                        letter-spacing: 0;
+                    }
+
+                    .copy-ja {
+                        font-size: 1.6rem;
+                        letter-spacing: 0;
+                    }
+
+                }
+            }
+        }
+
+
+        .formSec {
+            form {
+
+
+                dd {
+                    margin-bottom: 37px;
+                    &:last-of-type  {
+                        margin-bottom: 40px;
+                    }
+
+                    .contents-list {
+                        display: block;
+    
+                        .radio-btn {
+                            margin-bottom: 14px;
+    
+                        }
+                    }
+    
+                }
+            }
+            .privacy-policy-wrapper {
+                .privacy-policy-details{
+                    font-size: 1.4rem;
+                    line-height: 1.7;
+                }
+                
+                .button-wrapper {
+                    .submit-btn {
+                        margin-bottom: 80px;
+                    }
+                }
+            }
+
+
+
+        }
+
+
+
+    }
+
+}
