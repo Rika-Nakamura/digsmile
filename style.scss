@@ -386,6 +386,7 @@ work-and-culture
         .card-2 {
             padding-left: 30px;
         }
+
     }
 }
 
@@ -586,6 +587,7 @@ sp-work-and-culture
             margin-bottom: 40px;
 
             .work-and-culture-container {
+                padding: 80px 0 60px;
                 padding-top: 40px;
                 display: block;
 
@@ -595,6 +597,12 @@ sp-work-and-culture
                     &:last-of-type {
                         margin-bottom: 0;
                     }
+                }
+                .card-1 {
+                    padding-right: 0;
+                }
+                .card-2 {
+                    padding-left: 0;
                 }
                 
             }
